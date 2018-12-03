@@ -1,0 +1,17 @@
+{
+  "name": "adventofnode",
+  "version": "1.0.0",
+  "description": "Advent of Code solutions written in NodeJs",
+  "main": "index.js",
+  "scripts": {
+    "new": "node utils/createSolution.js"
+  },
+  "author": "Andrew Haine",
+  "license": "ISC",
+  "dependencies": {
+    "colors": "^1.3.2",
+    "fs-extra": "^7.0.1",
+    "inquirer": "^6.2.1",
+    "js-yaml": "^3.12.0"
+  }
+}
