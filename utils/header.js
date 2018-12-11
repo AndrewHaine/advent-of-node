@@ -5,7 +5,6 @@
 
 const fs = require("fs");
 const path = require("path");
-const showAns = require("../../utils/index").showAns;
-const dump = require("../../utils/index").dump;
+const { showAns, dump } = require("../../utils/index");
 const input = fs.readFileSync(path.join(__dirname, "input.txt"), "utf8");
 const inputArray = input.split("\n");

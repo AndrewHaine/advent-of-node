@@ -24,7 +24,7 @@ inquirer
       type: "list",
       message: "Select the day of month for this solution:",
       choices() {
-        return Array(31)
+        return Array(25)
           .fill()
           .map((i, j) => {
             return j < 10 ? `0${j}` : `${j}`;
