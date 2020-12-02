@@ -10,11 +10,9 @@ const input = fs.readFileSync(path.join(__dirname, "input.txt"), "utf8");
 const inputArray = input.split("\n");
 
 const validPasswords = inputArray.filter(row => {
-  const [req, pwd] = row.split(': ');
 
-  const [indexes, search] = req.split(' ');
-
-  const [a, b] = indexes.split('-').map(Number);
+  const partsExpression = /^(\d+)-(\d+) ([a-z]): ([a-z]+)$/;
+  const [all, ...[a, b, search, pwd]] = partsExpression.exec(row) || [];
 
   const pwdParts = pwd.split('');
 
