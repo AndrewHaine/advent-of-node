@@ -13,7 +13,7 @@ const rules = input.split("\n");
 const splitRule = rule => {
   const regex = /^([a-z ]+) bags contain (.*).$/i
   const [all, ...[outer, rest]] = regex.exec(rule) || [];
-  const contains = rest.split(', ').map(inner => inner.match(/\d+/)[0]);
+  const contains = rest.split(', ').;
 
   return {
     outer,
