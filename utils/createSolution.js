@@ -1,12 +1,14 @@
-const fs = require("fs");
-const path = require("path");
-const inquirer = require("inquirer");
-const yaml = require("js-yaml");
-const fsExtra = require("fs-extra");
-const colors = require("colors");
+import fs from "fs";
+import path, { dirname } from "path";
+import inquirer from "inquirer";
+import yaml from "js-yaml";
+import fsExtra from "fs-extra";
+import { fileURLToPath } from "url";
 
-const settings = yaml.safeLoad(
-  fs.readFileSync(path.join(__dirname, "../settings.yaml"))
+const DIRNAME = dirname(fileURLToPath(import.meta.url));
+
+const settings = yaml.load(
+  fs.readFileSync(path.join(DIRNAME, "../settings.yaml"))
 );
 
 inquirer
@@ -35,7 +37,7 @@ inquirer
   ])
   .then(answers => {
     // Create the year directory
-    const yearDir = path.join(__dirname, `../${answers.year}`);
+    const yearDir = path.join(DIRNAME, `../${answers.year}`);
     if (!fs.existsSync(yearDir)) {
       fs.mkdirSync(yearDir);
     }
@@ -51,10 +53,10 @@ inquirer
 
     // Create the solution from the template
     fs.mkdirSync(dayDir);
-    fsExtra.copySync(`${path.join(__dirname, "_template")}`, dayDir);
+    fsExtra.copySync(`${path.join(DIRNAME, "_template")}`, dayDir);
 
     // Append a common header template
-    const header = fs.readFileSync(path.join(__dirname, "header.js"));
+    const header = fs.readFileSync(path.join(DIRNAME, "header.js"));
     ["a", "b"].forEach(solutionFile => {
       fs.appendFile(path.join(dayDir, `${solutionFile}.js`), header, e => {
         if (e)

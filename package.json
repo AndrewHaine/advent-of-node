@@ -2,6 +2,7 @@
   "name": "adventofnode",
   "version": "1.0.0",
   "description": "Advent of Code solutions written in NodeJs",
+  "type": "module",
   "main": "index.js",
   "scripts": {
     "new": "node utils/createSolution.js"
