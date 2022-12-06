@@ -1,10 +1,12 @@
-const util = require("util");
-const colors = require("colors");
+import util from "util";
+import colors from "colors";
 
-exports.dump = contents => {
+const dump = contents => {
   console.log(util.inspect(contents));
 };
 
-exports.showAns = answer => {
-  console.log(`The answer is: ${String(answer).bold.yellow}`);
+const showAns = answer => {
+  console.log(`The answer is: ${colors.bold.yellow(String(answer))}`);
 };
+
+export { dump, showAns };
